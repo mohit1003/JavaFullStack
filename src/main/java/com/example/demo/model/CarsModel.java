@@ -1,12 +1,16 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
 @Entity
 public class CarsModel {
 	@javax.persistence.Id
-	private String Id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int Id;
 	
 	private String brand;
 	private String model;
@@ -16,7 +20,7 @@ public class CarsModel {
 	private String price;
 	@Pattern(regexp = "(petrol|diesel)")
 	private String fuel;
-	public CarsModel(String id, String brand, String model, @Pattern(regexp = "^\\d{4}$") String year, int noOfKM,
+	public CarsModel(int id, String brand, String model, @Pattern(regexp = "^\\d{4}$") String year, int noOfKM,
 			String price, @Pattern(regexp = "(petrol|diesel)") String fuel) {
 		super();
 		Id = id;
@@ -30,10 +34,10 @@ public class CarsModel {
 	public CarsModel() {
 		super();
 	}
-	public String getId() {
+	public int getId() {
 		return Id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		Id = id;
 	}
 	public String getBrand() {
