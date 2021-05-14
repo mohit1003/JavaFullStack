@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Best Choice Cars</title>
 	</head>
@@ -9,17 +9,20 @@
 	
 	<h3>Choose a price range to find available card</h3>
 	
-	<form>
+	<form th:action="@{/carsSearchResultPrice}" method="get">
 		<table>
 			<tr>
-				<td><input type="radio"> < 5 Lakh</td>
+				<td><input type="radio" id="price" name="price" value="lt5"> < 5 Lakh</td>
 			</tr>
 			<tr>
-				<td><input type="radio"> > 5 Lakh</td>
+				<td><input type="radio" id="price" name="price" value="gt5"> > 5 Lakh</td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Find Your Car">
-					<button type="button" >Back</button></td>
+					<a href="http://localhost:8080/"> <button type="button" >Back</button></a></td> 
+			</tr>
+			<tr>
+				<td><div style="color: red;" th:if="${error}" th:text="${error}"></div></td>
 			</tr>
 			
 		</table>
